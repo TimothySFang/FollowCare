@@ -13,11 +13,11 @@ load_dotenv()
 def main():
     # Get OpenAI API key from environment variable
     api_key = os.getenv("OPENAI_API_KEY")
-    api_key = os.getenv("OPENAI_API_KEY")
     
     # DEBUG: Show what key is being used
     if api_key:
         # Mask the key for security but show enough to verify
+        
         masked = f"{api_key[:10]}...{api_key[-10:]}" if len(api_key) > 20 else "***"
         print(f"\n🔍 DEBUG: API Key loaded")
         print(f"   Length: {len(api_key)} characters")

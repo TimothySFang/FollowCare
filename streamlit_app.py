@@ -2,6 +2,8 @@ import streamlit as st
 import os
 from datetime import datetime, timedelta
 import json
+from dotenv import load_dotenv 
+load_dotenv(override=True)
 
 from models.patient import Patient
 from agents.symptom_checkin import SymptomCheckInAgent
@@ -40,6 +42,8 @@ api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     st.error("OPENAI_API_KEY environment variable is not set. Please set it before running the app.")
     st.stop()
+
+print(api_key)
 
 # Add this function at the beginning of your app
 def check_environment_variables():
