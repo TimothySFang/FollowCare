@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv  # Add this line
 from datetime import datetime, timedelta
 from models.patient import Patient
 from agents.symptom_checkin import SymptomCheckInAgent
@@ -7,9 +8,28 @@ from agents.risk_assessment import RiskAssessmentAgent
 from agents.care_instruction import CareInstructionAgent
 from agents.summary import SummaryAgent
 
+load_dotenv()
+
 def main():
     # Get OpenAI API key from environment variable
     api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
+    
+    # DEBUG: Show what key is being used
+    if api_key:
+        # Mask the key for security but show enough to verify
+        masked = f"{api_key[:10]}...{api_key[-10:]}" if len(api_key) > 20 else "***"
+        print(f"\n🔍 DEBUG: API Key loaded")
+        print(f"   Length: {len(api_key)} characters")
+        print(f"   Starts with: {api_key[:7]}")
+        print(f"   Ends with: {api_key[-4:]}")
+        print(f"   Full (masked): {masked}")
+        print(f"   Has leading space: {api_key[0] == ' ' if api_key else False}")
+        print(f"   Has trailing space: {api_key[-1] == ' ' if api_key else False}")
+        print(f"   Has quotes: {api_key.startswith('"') or api_key.startswith(\"'\")}")
+    else:
+        print("❌ ERROR: OPENAI_API_KEY environment variable not set.")
+        return
     if not api_key:
         print("Error: OPENAI_API_KEY environment variable not set.")
         return
