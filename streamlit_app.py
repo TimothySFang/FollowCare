@@ -14,7 +14,7 @@ from agents.summary import SummaryAgent
 
 # Page configuration
 st.set_page_config(
-    page_title="Autonomous Dental Follow-Up & Risk Monitor",
+    page_title="FollowCare",
     page_icon="🦷",
     layout="wide"
 )
@@ -65,7 +65,7 @@ def check_environment_variables():
     return missing_vars
 
 # App title
-st.title("Dental Follow-up System")
+st.title("FollowCare")
 
 # Create a two-column layout for the main content and the right sidebar
 main_col, right_sidebar_col = st.columns([3, 1])
